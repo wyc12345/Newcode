@@ -2,7 +2,7 @@
     <div :class='activeClass'>
         <header>
             <span>首页</span>
-            <h2>{{title}}</h2>
+            <h2>{{activeTitle}}{{propsVal}}</h2>
         </header>
         <nav>
             <ul>
@@ -64,7 +64,7 @@
 export default {
     data(){
         return {
-            title:'电影',
+            activeTitle:'电影',
             activeClass:'movie',
             btnList:[
                 {
@@ -91,13 +91,27 @@ export default {
             ]
         }
     },
+    props: ['navVal'],
     methods:{
         go(obj){
-            this.title=obj.name;
+            this.activeTitle=obj.name;
             this.activeClass=obj.className;
             this.$router.push(obj.path);
         }
-    }
+    },
+    computed: {
+        propsVal(){
+        // this.activeClass = this.navVal.className;
+        // this.activeTitle = this.navVal.title
+        return this.navVal.title
+        }
+    },
+    watch: {
+        propsVal(){
+        this.activeClass = this.navVal.className;
+        this.activeTitle = this.navVal.title
+        }
+    },
 }
 </script>
 

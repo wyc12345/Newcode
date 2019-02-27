@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-     <navigation />
-    <router-view/>
+    <navigation :navVal="activeNav"/>
+    <router-view @changeNav="change"/>
   </div>
 </template>
 
@@ -11,7 +11,21 @@
 <script>
 import navigation from '@/components/Navigation.vue'
 export default {
-  components:{
+   data () {
+    return {
+      activeNav:{
+        title:"电影",
+        className:"movie"
+      }  
+    }
+  },
+  methods: {
+    change(obj){
+      this.activeNav.title = obj.title;
+      this.activeNav.className = obj.className;
+    }
+  },
+  components: {
     navigation
   }
 }
