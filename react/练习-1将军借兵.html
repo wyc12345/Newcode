@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/react.production.min.js"></script>
+    <script src="./js/react-dom.production.min.js"></script>
+    <script src="./js/browser.min.js"></script>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <script type="text/babel">
+        class King extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count:100
+                };
+                this.change= this.change.bind(this)
+            };
+            // change(){
+            //     this.setState({
+            //         count:this.state.count-10
+            //     })
+            // };
+            change(){ 
+                if(this.state.count>0){
+                    this.setState({
+                        count: this.state.count-10
+                    })
+                }
+                
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>全部士兵数量：{this.state.count}</h1>
+                        <General name='A' changeC={this.change}></General>
+                        <General name='B' changeC={this.change}></General>
+                    </div>
+                    
+                )
+            }
+        }
+        class General extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count:100
+                };
+                this.changeA=this.changeA.bind(this);
+            };
+            changeA(){
+                this.props.changeC();
+                console.log(this.props);
+                
+                this.setState({
+                    count: this.state.count+10
+                })
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>将军{this.props.name}有士兵数量：{this.state.count}</h1>
+                        <button onClick = {this.changeA}>调兵</button>
+                    </div>
+                )
+            }
+        }
+        // class GeneralB extends React.Component{
+        //     constructor(props){
+        //         super(props);
+        //         this.state = {
+        //             count:100
+        //         };
+        //         this.changeB = this.changeB.bind(this);
+        //     };
+        //     changeB(){ 
+        //         this.props.changeC();
+        //         this.setState({
+        //             count: this.state.count+10
+        //         })
+        //     }
+        //     render(){
+        //         return (
+        //             <div>
+        //                 <h1>将军B有士兵数量：{this.state.count}</h1>
+        //                 <button onClick = {this.changeB}>调兵</button>
+        //             </div>
+        //         )
+        //     }
+        // }
+        ReactDOM.render(
+            <King/>,
+            document.getElementById('root')
+        )
+
+    </script>
+</body>
+</html>

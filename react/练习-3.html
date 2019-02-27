@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="./js/react.production.min.js"></script>
+    <script src="./js/react-dom.production.min.js"></script>
+    <script src="./js/browser.min.js"></script>
+    <style>
+        .btn-primary{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    <script type="text/babel">
+        class TodoList extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {
+                    thing:'',
+                    time:'',
+                    losttime:''
+                }
+            }
+            changeThing(event){
+                console.log(event.target.value);
+                let newT = event.target.value;
+                this.setState({
+                    thing:newT,
+                })
+                console.log(this.state.thing);
+                
+            }
+            changeTime(event){
+                let newT = event.target.value;
+                this.setState({
+                    time:newT
+                })
+                console.log(this.state.time);
+                
+            }
+            changeLostTime(event){
+                let newT = event.target.value;
+                this.setState({
+                    losttime:newT
+                })
+                console.log(this.state.losttime);
+            }
+            more(){
+                console.log(2);
+                this.setState({
+                })
+            }
+            del(){
+                console.log(3);
+                
+            }
+            selected(){
+
+            }
+            render(){
+                return (
+                    <div>
+                        <form>
+                            <input type="text" placeholder="待办事务" onChange={this.changeThing.bind(this)}></input>
+                            <input type="date" placeholder="年/月/日" onChange={this.changeTime.bind(this)}></input>
+                            <input type="text" placeholder="待办用时" onChange={this.changeLostTime.bind(this)}></input>
+                            <button type="button" class="btn btn-primary" onClick={this.more.bind(this)}>添加</button>            
+                        </form>
+                        <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">待办事务</th>
+                            <th scope="col">待办时间</th>
+                            <th scope="col">预计用时</th>
+                            <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onClick={this.selected.bind(this)}>
+                            <td>
+                            <input type="checkbox"></input>
+                            </td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>
+                            <button onClick={this.del.bind(this)}>删除</button>
+                            </td>
+                            </tr>
+                            <tr onClick={this.selected.bind(this)}>
+                            <td>
+                            <input type="checkbox"></input>
+                            </td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>
+                            <button onClick={this.del.bind(this)}>删除</button>
+                            </td>
+                            </tr>
+                            <tr onClick={this.selected.bind(this)}>
+                            <td>
+                            <input type="checkbox"></input>
+                            </td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>
+                            <button onClick={this.del.bind(this)}>删除</button>
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <TodoList/>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>
