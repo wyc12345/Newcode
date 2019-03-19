@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jq/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <script>
+        // new Promise(function(resolve,reject){
+        //     $.get("./a.json",function(res){
+        //         // resolve(res);
+        //         reject();
+        //     })
+        // }).then(function(){
+        //     console.log("成功");
+            
+        // }).catch(function(){
+        //     console.log("失败");
+            
+        // })
+
+
+        // new Promise(function(resolve,reject){
+        //     $.get("./a.json",function(res){
+        //         // resolve(res);
+        //         // console.log(res);
+        //         reject();
+        //     })
+        // }).then(function(){
+        //     console.log("成功");
+            
+        // },function(){
+        //     console.log("失败");
+        // })
+
+
+        // function Ajaxpro(url){
+        //     return new Promise(function(resolve,reject){
+        //         $.get(url,function(res){
+        //             resolve(res);
+        //         })
+        //     })
+        // }
+        // let a = Ajaxpro("./a.json");
+        // a.then(function(res){
+        //     console.log(res);
+        // })
+        // let a = Ajaxpro("./a.json");
+        // a.then(function(res){
+        //     console.log(res);
+        //     return Ajaxpro("./b.json")
+        // }).then(function(res){
+        //     console.log(res);
+        //     return Ajaxpro("./c.json")
+        // }).then(function(res){
+        //     console.log(res);
+        // })
+
+
+
+        let a = new Promise(function(resolve,reject){
+            $.get('./a.json',function(){
+                // resolve();
+                reject();
+            })
+        })
+        let b = new Promise(function(resolve,reject){
+            $.get('./b.json',function(){
+                resolve();
+            })
+        })
+        let c = new Promise(function(resolve,reject){
+            $.get('./c.json',function(){
+                // resolve();
+                reject();
+            })
+        })
+        // Promise.all([a,b,c]).then(function(res){
+        //     console.log("全部成功");
+            
+        // },function(){
+        //     console.log("没有全部成功");
+        // })
+        Promise.race([a,b,c]).then(function(){   //第一个参数成功则返回第一个回调函数
+            console.log("全部成功");
+        },function(){
+            console.log("没有全部成功");
+        })
+    </script>
+</body>
+</html>

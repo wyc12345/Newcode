@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #left-box,#right-box{
+            width: 400px;
+            height: 400px;
+            float: left;
+            margin-right: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        #left-box img{
+            width: 400px;
+            height: 400px;
+        }
+        #right-box img{
+            width: 800px;
+            height: 800px;
+            position: absolute;
+        }
+        #move{
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255, .5);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="left-box">
+        <img src="../../image/mi8.jpg" alt="">
+        <div id="move"></div>
+    </div>
+    <div id="right-box">
+        <img  id="big-img" src="../../image/mi8.jpg" alt="">
+    </div>
+    <script>
+        var leftBox = document.getElementById('left-box');
+        var oMove = document.getElementById('move');
+        var rightBox = document.getElementById('right-box');
+        var Img = document.getElementById('big-img');
+        console.log(Img);
+        
+        console.log(leftBox);
+        console.log(oMove);
+        leftBox.onmouseover = function(){
+            leftBox.onmousemove = function(e){
+                var y = e.clientY-100;
+                var x = e.clientX-100;
+                if(x<=0){
+                    //  oMove.style.left = 0 + 'px';
+                    x = 0;
+                }
+                if(x>=200){
+                    //  oMove.style.left = 200 + 'px';
+                    x = 200;
+                }
+                if(y<=0){
+                    //  oMove.style.top = 0 + 'px';
+                    y = 0;
+                }
+                if(y>=200){
+                    //  oMove.style.top = 200 + 'px';
+                    y = 200;
+                } 
+                oMove.style.top = y + 'px';
+                oMove.style.left = x + 'px';
+                Img.style.left = -(2*x) + 'px';
+                Img.style.top = -(2*y) + 'px';
+                // if(x<=100&&y<=100){
+                //     Img.style.left = 0 + 'px';
+                //     Img.style.top = 0 + 'px';
+                // }
+                // if(x>=200&&y>=200){
+                //     Img.style.left = 600 + 'px';
+                //     Img.style.top = 0 + 'px';
+                // }
+            }     
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 50px;
+            background: red;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+        var oB1 = document.getElementById('box1');
+        var oB2 = document.getElementById('box2');
+        var oB3 = document.getElementById('box3');
+        var timer1 = null;
+        var timer2 = null;
+        oB1.onmouseover = function(){
+            clearInterval(timer1);
+            var _this=this;
+            timer1 = setInterval(function(){
+                if(_this.offsetWidth<400){
+                    oB1.style.width=_this.offsetWidth + 10 + 'px';
+                }else{
+                    clearInterval(timer1);
+                }              
+            }
+            ,16)
+        }
+        oB1.onmouseout = function(){
+            clearInterval(timer1);
+            var _this=this;
+            timer1 = setInterval(function(){
+                if(_this.offsetWidth>200){
+                    oB1.style.width=_this.offsetWidth - 10 + 'px';
+                }else{
+                    clearInterval(timer1);
+                }              
+            }
+            ,16)
+        }
+        oB2.onmouseover = function(){
+            clearInterval(timer2);
+            var _this=this;
+            timer = setInterval(function(){
+                if(_this.offsetWidth<400){
+                    oB2.style.width=_this.offsetWidth + 10 + 'px';
+                }else{
+                    clearInterval(timer2);
+                }              
+            }
+            ,16)
+        }
+        oB2.onmouseout = function(){
+            clearInterval(timer2);
+            var _this=this;
+            timer = setInterval(function(){
+                if(_this.offsetWidth>200){
+                    oB2.style.width=_this.offsetWidth - 10 + 'px';
+                }else{
+                    clearInterval(timer2);
+                }              
+            }
+            ,16)
+        }
+    </script>
+</body>
+</html>
