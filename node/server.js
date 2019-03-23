@@ -16,3 +16,9 @@ http.createServer(function(req,res){
     //res.end('<h1>hello world</h1>');
 }).listen('3000')
 console.log('服务运行在3000端口')
+
+
+
+//字符串转对象
+//var data = '{"id":1,}'
+//单引号扩双引号
