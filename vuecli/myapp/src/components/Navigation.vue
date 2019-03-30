@@ -1,12 +1,12 @@
 <template>
     <div :class='activeClass'>
         <header>
-            <span>首页</span>
-            <h2>{{activeTitle}}{{propsVal}}</h2>
+            <span @click="routerPush(btnList[0])">首页</span>
+            <h2>{{propsVal}}</h2>
         </header>
         <nav>
             <ul>
-               <li @click="go(item)" v-for="(item,index) in btnList" :key='index'>{{item.name}}</li>
+               <li @click="go(item)" :class="{'active':item.className==activeClass}" v-for="(item,index) in btnList" :key='index'>{{item.name}}</li>
             </ul>
         </nav>
     </div>
@@ -19,9 +19,16 @@
         position: fixed;
         text-align: center;
         background-color:rgb(33, 150, 243);
+        z-index: 1;
     }
     header{
         top: 0;
+    }
+    header span{
+        position: absolute;
+        left: 10px;
+        top:50%;
+        transform: translateY(-50%);
     }
     nav{
         bottom: 0;
