@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('pro2:server');
 var http = require('http');
 
+console.log('serve start port 3000');
+
 /**
  * Get port from environment and store in Express.
  */

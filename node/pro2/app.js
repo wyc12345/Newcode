@@ -39,3 +39,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+
+
+//为整个框架初始化全局变量，全局函数，全局包，同时引出路由。

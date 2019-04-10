@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <a-scene>
+        <!-- 球体 -->
+        <a-sphere position="0 1 -1" radius="1" color="#EF2D5E"></a-sphere>
+        <!-- 盒（此处是立方体） -->
+        <a-box width="1" height="1" rotation="0 45 0" depth="1" color="#4CC3D9" position="-1 0.5 1"></a-box>    
+        <!-- 圆柱 -->
+        <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <!-- 平面 -->
+        <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        <!-- sky元用于为场景添加背景图或显示360度的全景图 -->
+        <a-sky color="#ECECEC"></a-sky>
+        <!-- 用于指定摄像机的位置 -->
+        <a-entity position="0 0 4">
+          <a-camera></a-camera>
+        </a-entity>
+      </a-scene>
+</head>
+<body>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+
+
+</body>
+</html>
