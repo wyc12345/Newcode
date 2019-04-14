@@ -1,5 +1,4 @@
 //路由文件
-
 var express = require('express');
 var router = express.Router();
 var User = require('../controllers/user.js');
