@@ -22,13 +22,14 @@
             animation: test 3s ease-in-out infinite;
         }
         .div1{
-            background: #000;
+            background: red;
             transform: translateZ(200px);
             transform-style: preserve-3d
         }
         .div2{
-            background: #444444;
-            transform: translateZ(-200px);
+            background: red;
+            transform: translateZ(12px);
+            transform-style: preserve-3d
         }
         @keyframes test{
             0%{
@@ -42,8 +43,8 @@
 </head>
 <body>
     <div class="box">
-        <div class="div1">
-            <div class="div2"></div>
+        <div class="div1">1234
+            <div class="div2">123</div>
         </div>
 
     </div>

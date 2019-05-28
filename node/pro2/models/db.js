@@ -2,9 +2,9 @@ var mysql = require('mysql');
 var pool  = mysql.createPool({
   connectionLimit : 10,
   host            : 'localhost',
-  user            : 'bob',
-  password        : 'secret',
-  database        : 'my_db'
+  user            : 'root',
+  password        : '',
+  database        : 'blog'
 });
 exports.query = function(sql,parmas,callback){
 
@@ -12,7 +12,10 @@ exports.query = function(sql,parmas,callback){
         if (err) throw err; // not connected!
        
         // Use the connection
-        connection.query('SELECT something FROM sometable', function (error, results, fields) {
+        // var sql="indert into 表名(主键，... ，NAME) values(null, ... , NAME) ";
+        var sql="indert into 表名(NAME，... ，AGE) values(?, ... , ?) ";
+        //connection.query(sql [NAME, ... , AGE], function (error, results, fields) {
+        connection.query(sql, function (error, results, fields) {
           // When done with the connection, release it.
           connection.release();
        
